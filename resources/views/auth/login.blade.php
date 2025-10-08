@@ -2,6 +2,7 @@
     <x-slot:title>
         Sign in
     </x-slot:title>
+
     <div class="hero bg-base-200 min-h-screen">
         <form method="POST" action="/login">
             @csrf
@@ -9,7 +10,13 @@
                 <legend class="fieldset-legend">Login</legend>
 
                 <label class="label">Email</label>
-                <input name="email" type="email" class="input" placeholder="Email" />
+                <input name="email" type="email" class="input" placeholder="Email" value="{{ old('email') }}" />
+
+                @error('email')
+                    <span class="text-error">
+                        {{ $message }}
+                    </span>
+                @enderror
 
                 <label class="label">Password</label>
                 <input name="password" type="password" class="input" placeholder="Password" />

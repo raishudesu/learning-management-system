@@ -4,17 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
-use App\Models\Role;
-use App\Models\User;
 use App\Services\Auth\RegisterService;
 use Auth;
-use Hash;
 
 class RegisterController extends Controller
 {
     protected RegisterService $registerService;
 
-    public function __construct(RegisterService $registerService )
+    public function __construct(RegisterService $registerService)
     {
         $this->registerService = $registerService;
     }
@@ -27,7 +24,7 @@ class RegisterController extends Controller
         $validated = $request->validated();
 
         $user = $this->registerService->register($validated);
-        
+
         Auth::login($user);
 
         return redirect('/')->with('success', 'User registered successfully!');
