@@ -15,7 +15,16 @@ class LoginController extends Controller
         if (Auth::attempt($validated)) {
             $request->session()->regenerate();
 
-            return redirect('/')->with('success', 'Welcome back!');
+            switch ($request->user()->role_id) {
+                case 1:
+                    return redirect('/admin-dashboard')->with('success', 'Welcome Admin!');
+                case 2:
+                    return redirect('/teacher-dashboard')->with('success', 'Welcome Teacher!');
+                case 3:
+                    return redirect('/student-dashboard')->with('success', 'Welcome Student!');
+                default:
+                    return redirect('/')->with('error', 'Unauthorized');
+            }
         }
 
         return back()

@@ -13,7 +13,11 @@ class CourseController extends Controller
      */
     public function index()
     {
-        //
+        $user = auth()->user();
+
+        $courses = Course::where('user_id', $user->id)->get();
+
+        return view('components.dashboard.teacher-dashboard', ['courses' => $courses]);
     }
 
     /**

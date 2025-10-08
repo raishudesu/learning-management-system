@@ -87,7 +87,7 @@ class User extends Authenticatable
      */
     public function hasRole(string $role): bool
     {
-        return $this->role && $this->role->slug === $role;
+        return $this->role && $this->role->name === $role;
     }
 
     /**
@@ -95,7 +95,7 @@ class User extends Authenticatable
      */
     public function hasPermission(string $permission): bool
     {
-        return $this->role && $this->role->hasPermission($permission);
+        return $this->role && $this->role->hasPermissions($permission);
     }
 
     /**
@@ -103,7 +103,7 @@ class User extends Authenticatable
      */
     public function hasAnyRole(array $roles): bool
     {
-        return $this->role && in_array($this->role->slug, $roles);
+        return $this->role && in_array($this->role->name, $roles);
     }
 
     /**

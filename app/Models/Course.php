@@ -13,7 +13,7 @@ class Course extends Model
         'title',
         'description',
         'course_code',
-        'created_by',
+        'user_id',
     ];
 
     /**
@@ -29,7 +29,7 @@ class Course extends Model
      */
     public function creator(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'created_by');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function posts(): HasMany
