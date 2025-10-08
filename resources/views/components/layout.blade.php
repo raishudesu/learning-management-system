@@ -2,7 +2,7 @@
 
     <x-header></x-header>
 
-    <main class="container mx-auto">
+    <main class="container mx-auto flex-grow flex flex-col">
         {{ $slot }}
     </main>
 

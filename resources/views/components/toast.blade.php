@@ -1,34 +1,33 @@
 @if(session('success'))
-    <div id="toast" class="toast toast-top toast-center">
+    <div id="toast" class="toast toast-top toast-center z-50">
         <div class="alert alert-success">
-            <svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <g fill="currentColor" stroke-linejoin="miter" stroke-linecap="butt">
-                    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-linecap="square"
-                        stroke-miterlimit="10" stroke-width="2"></circle>
-                    <polyline points="7 13 10 16 17 8" fill="none" stroke="currentColor" stroke-linecap="square"
-                        stroke-miterlimit="10" stroke-width="2"></polyline>
-                </g>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <span>{{ session('success') }}</span>
         </div>
     </div>
 
 @elseif (session('warning'))
-    <div id="toast" class="toast toast-top toast-center">
+    <div id="toast" class="toast toast-top toast-center z-50">
         <div class="alert alert-warning">
-            <svg class="size-[1em]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">
-                <g fill="currentColor">
-                    <path
-                        d="M7.638,3.495L2.213,12.891c-.605,1.048,.151,2.359,1.362,2.359H14.425c1.211,0,1.967-1.31,1.362-2.359L10.362,3.495c-.605-1.048-2.119-1.048-2.724,0Z"
-                        fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
-                    </path>
-                    <line x1="9" y1="6.5" x2="9" y2="10" fill="none" stroke="currentColor" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="1.5"></line>
-                    <path d="M9,13.569c-.552,0-1-.449-1-1s.448-1,1-1,1,.449,1,1-.448,1-1,1Z" fill="currentColor"
-                        data-stroke="none" stroke="none"></path>
-                </g>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
             </svg>
             <span>{{ session('warning') }}</span>
+        </div>
+    </div>
+
+@elseif (session('error'))
+    <div id="toast" class="toast toast-top toast-center z-50">
+        <div class="alert alert-error">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>{{ session('error') }}</span>
         </div>
     </div>
 @endif

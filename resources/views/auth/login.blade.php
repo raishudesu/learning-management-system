@@ -3,7 +3,7 @@
         Sign in
     </x-slot:title>
 
-    <div class="hero bg-base-200 min-h-screen">
+    <div class="flex flex-col items-center justify-center flex-grow">
         <form method="POST" action="/login">
             @csrf
             <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
@@ -21,8 +21,13 @@
                 <label class="label">Password</label>
                 <input name="password" type="password" class="input" placeholder="Password" />
 
-                <button class="btn btn-neutral mt-4" type="submit">Login</button>
+                <button class="btn btn-primary mt-4" type="submit">Sign in</button>
+
+                <div class="divider">Doesn't have an account?</div>
+                <a href="/register" class="btn btn-block">Sign up</a>
             </fieldset>
+
         </form>
     </div>
+
 </x-layout>

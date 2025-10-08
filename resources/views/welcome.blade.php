@@ -3,7 +3,7 @@
         Welcome
     </x-slot:title>
 
-    <div class="hero bg-base-200 min-h-screen">
+    <div class="hero bg-base-200 flex-grow">
         <div class="hero-content text-center">
             <div class="max-w-md">
                 <h1 class="text-5xl font-bold">Hello there</h1>
