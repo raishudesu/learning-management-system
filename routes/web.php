@@ -31,10 +31,10 @@ Route::group(['prefix' => 'teacher-dashboard', 'middleware' => ['role-check:Teac
 
     Route::get('/', [CourseController::class, 'index']);
 
-    Route::get('/courses/{course}', [RegisterController::class, 'show'])
+    Route::get('/courses/{course}', [CourseController::class, 'show'])
         ->name('courses.show');
 
-    Route::post('/courses', [RegisterController::class, 'store'])
+    Route::post('/courses', [CourseController::class, 'store'])
         ->name('courses.store');
 
     Route::put('/courses/{course}', [CourseController::class, 'update'])
