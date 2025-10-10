@@ -5,9 +5,17 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
 use App\Models\Course;
+use App\Services\CourseService;
 
 class CourseController extends Controller
 {
+    protected CourseService $courseService;
+
+    public function __construct(CourseService $courseService)
+    {
+        $this->courseService = $courseService;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -33,7 +41,15 @@ class CourseController extends Controller
      */
     public function store(StoreCourseRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $validated['user_id'] = auth()->id();
+
+        $course = $this->courseService->createCourse($validated);
+
+        return redirect()
+            ->route('courses.show', $course)
+            ->with('success', 'Course created successfully');
     }
 
     /**
@@ -57,7 +73,13 @@ class CourseController extends Controller
      */
     public function update(UpdateCourseRequest $request, Course $course)
     {
-        //
+        $validated = $request->validated();
+
+        $updatedCourse = $this->courseService->updateCourse($validated, $course);
+
+        return redirect()
+            ->route('courses.show', $updatedCourse)
+            ->with('success', 'Course updated successfully');
     }
 
     /**

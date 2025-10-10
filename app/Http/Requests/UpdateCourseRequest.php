@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateCourseRequest extends FormRequest
@@ -11,7 +12,7 @@ class UpdateCourseRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return User::hasPermission('Update Courses');
     }
 
     /**
@@ -22,7 +23,9 @@ class UpdateCourseRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'id' => 'required|int',
+            'title' => 'required|min:6|max:255',
+            'description' => 'required|min:6|max:560',
         ];
     }
 }

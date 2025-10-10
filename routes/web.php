@@ -31,6 +31,15 @@ Route::group(['prefix' => 'teacher-dashboard', 'middleware' => ['role-check:Teac
 
     Route::get('/', [CourseController::class, 'index']);
 
+    Route::get('/courses/{course}', [RegisterController::class, 'show'])
+        ->name('courses.show');
+
+    Route::post('/courses', [RegisterController::class, 'store'])
+        ->name('courses.store');
+
+    Route::put('/courses/{course}', [CourseController::class, 'update'])
+        ->name('courses.update');
+
 });
 
 Route::group(['prefix' => 'student-dashboard', 'middleware' => ['role-check:Student']], function () {
